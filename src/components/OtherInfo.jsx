@@ -1,6 +1,14 @@
 import React from "react";
 
-function OtherInfo({ formData, setFormData }) {
+function OtherInfo({
+  formData,
+  setFormData,
+  setPage,
+  setBar,
+  bar,
+  page,
+  length,
+}) {
   return (
     <div className="other-info-container">
       <input
@@ -19,6 +27,28 @@ function OtherInfo({ formData, setFormData }) {
           setFormData({ ...formData, other: e.target.value });
         }}
       />
+
+      <div className="footer">
+        <button
+          type="button"
+          disabled={page === 0}
+          onClick={() => {
+            setPage((currentPage) => currentPage - 1);
+          }}
+        >
+          Prev
+        </button>
+
+        <button
+          type="button"
+          disabled={page === length - 1}
+          onClick={() => {
+            setPage((currentPage) => currentPage + 1);
+          }}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }

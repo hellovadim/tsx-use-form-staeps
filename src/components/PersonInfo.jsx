@@ -1,6 +1,14 @@
 import React from "react";
 
-function PersonInfo({ formData, setFormData }) {
+function PersonInfo({
+  formData,
+  setFormData,
+  setPage,
+  setBar,
+  bar,
+  page,
+  length,
+}) {
   return (
     <div className="personal-info-container">
       <input
@@ -27,6 +35,28 @@ function PersonInfo({ formData, setFormData }) {
           setFormData({ ...formData, username: e.target.value });
         }}
       />
+      <div className="footer">
+        <button
+          type="button"
+          disabled={page === 0}
+          onClick={() => {
+            setPage((currentPage) => currentPage - 1);
+          }}
+        >
+          Prev
+        </button>
+
+        <button
+          type="button"
+          disabled={page === length - 1}
+          onClick={() => {
+            setPage((currentPage) => currentPage + 1);
+            setBar({ ...bar, third: true });
+          }}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
